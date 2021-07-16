@@ -1,4 +1,4 @@
-﻿#NoEnv
+#NoEnv
 ; #Warn
 #SingleInstance Force
 SendMode Input
@@ -8,7 +8,7 @@ SetWorkingDir %A_ScriptDir%
 ; Start
 Gui, Janitor:New, -Resize -Border +HwndJanitorHwnd, Janitor ; GUI at start
 Gui, Janitor:Add, CheckBox, vSerkket, Download Serkket? ; GUI at start
-Gui, Janitor:Add, CheckBox, vBedrockSerkket, Download BedrockSerkket? ; GUI at start
+Gui, Janitor:Add, CheckBox, vBedrockSerkket, Download Bedrock Serkket? ; GUI at start
 Gui, Janitor:Add, Button, Default w80, OK ; GUI at start
 Gui, Janitor:Show ; GUI at start
 WinWaitClose, ahk_id %JanitorHwnd% ; GUI at start
@@ -29,13 +29,13 @@ Goto, Progdwnld
 ; End of check
 }
 if (BedrockSerkket = "1") {
-FileDelete, %A_ScriptDir%\BedrockSerkket.exe ; Delete old version of software
+FileDelete, %A_ScriptDir%\BedSerkket.exe ; Delete old version of software
 GuiControl,, MyProgress, +25
 Progdwnld2: ; Label, in case of download fail
-UrlDownloadToFile, https://github.com/Epicgamernate/SerkketBedrock/releases/latest/download/BedrockSerkket.exe, BedrockSerkket.exe ; Download new version of software
+UrlDownloadToFile, https://github.com/Epicgamernate/SerkketBedrock/releases/latest/download/BedSerkket.exe, BedSerkket.exe ; Download new version of software
 GuiControl,, MyProgress, +25
 ; Check if download failed, if it did, redownload
-if !FileExist("BedrockSerkket.exe") { 
+if !FileExist("BedSerkket.exe") { 
 GuiControl,, MyProgress, -25
 Goto, Progdwnld2
 }
